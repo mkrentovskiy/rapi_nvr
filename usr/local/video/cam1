@@ -1,0 +1,6 @@
+#!/bin/bash
+while :
+do
+	./cam1.py | /usr/local/bin/ffmpeg -i - -f flv -vcodec copy -an rtmp://127.0.0.1/cams/cam1
+	sleep 3
+done

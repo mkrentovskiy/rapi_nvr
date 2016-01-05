@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+	body { background: #111; }
+	.p720 { width: 1280px; height: 720px; background: #111; }
+    </style> 
+  </head>
+  <body>
+	<div>
+		<select id="cam" onchange="get()">
+		    <option value="cam0">Cam0: Indoor</option>
+		    <option value="cam1">Cam1: Outdoor</option>
+		</select>
+	</div>
+	<div id="_view" class="p720"></div>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+	var isApple = (navigator.userAgent.match(/iPad/i) != null) || 
+                      (navigator.userAgent.match(/iPhone/i) != null) || 
+                      (navigator.userAgent.match(/iPod/i) != null);
+
+	function get() {
+		var cam = $("#cam").val();
+		var host = window.location.hostname;
+		$("#_view").html(isApple ? 
+			"<video width='1280' height='720' src='/cams/" + cam + ".m3u8' controls='controls' x-webkit-airplay='allow'/>" :
+			"<object width='1280' height='720'> \
+			    <param name='movie' value='/player/StrobeMediaPlayback.swf'></param> \
+			    <param name='flashvars' value='src=rtmp%3A%2F%2F" + host + "%2Fcams%2F" + cam + "&streamType=live&loop=true&autoRewind=true&autoPlay=true&controlBarMode=floating'></param> \
+			    <param name='allowFullScreen' value='true'></param> \
+			    <param name='allowscriptaccess' value='always'></param> \
+			    <param name='wmode' value='transparent'></param> \
+			    <embed src='/player/StrobeMediaPlayback.swf' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' wmode='transparent' width='1280' height='720' flashvars='src=rtmp%3A%2F%2F" + host + "%2Fcams%2F" + cam + "&streamType=live&loop=true&autoRewind=true&autoPlay=true&controlBarMode=floating'></embed> \
+			</object>"
+		);
+	}
+	$(document).ready(function() { get(); });
+
+    </script>
+  </body>
+</html>

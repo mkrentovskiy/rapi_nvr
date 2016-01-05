@@ -1,0 +1,9 @@
+#!/bin/bash
+while :
+do
+        ffmpeg  \
+        -i rtsp://192.168.10.1/ch0_0.h264 \
+        -vcodec copy -acodec copy \
+        -f flv  "rtmp://127.0.0.1/cams/cam0 live=1"
+        sleep 5
+done
