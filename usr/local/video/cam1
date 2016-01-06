@@ -1,6 +1,6 @@
 #!/bin/bash
 while :
 do
-	./cam1.py | /usr/local/bin/ffmpeg -i - -f flv -vcodec copy -an rtmp://127.0.0.1/cams/cam1
+	/usr/local/bin/camfix.py '192.168.10.2' 554 '/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp?real_stream' | /usr/local/bin/ffmpeg -i - -f flv -vcodec copy -an rtmp://127.0.0.1/cams/cam1
 	sleep 3
 done

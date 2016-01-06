@@ -5,9 +5,13 @@ import random
 import re
 import sys
 
-host = '192.168.10.2'
-url = '/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp?real_stream' # 92 93 94
-port = 554
+if len(sys.argv) == 4:
+    host = sys.argv[1] # '192.168.10.2'
+    port = int(sys.argv[2])
+    url = sys.argv[3] # '/user=admin_password=tlJwpbo6_channel=1_stream=0.sdp?real_stream' # 92 93 94
+else:
+    print "%s host port url" % sys.argv[0]
+    exit(1)
 
 dump = True # Save RTP to file or not
 dumpraw = False # Save raw RTP to file or not

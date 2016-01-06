@@ -27,7 +27,7 @@ Ok, let's turn your Raspberry Pi 2 into simple NVR with simple steps:
 
 4. next,configure cams. 
 
- You're know, that there are two type of IP-cams - with RTSP bug or without. 
+ You're know, that there are two type of IP-cams - with RTSP bug (read more about https://github.com/datacompboy/chinacambug)  or without. 
  Firts of it need two step capture - special RTSP client for stream capture and ffpmeg for pipe processing.
  Last needs only ffmpeg. Take a look at /usr/local/video. There are two examples for each - cam0 for valid RTSP (Xiaomi Ant, etc) and with bug 
  (most of others chinees IP-cams). Note: if you need more then two cams, you can copy this scripts and configure by yourself, but don't forget about 
